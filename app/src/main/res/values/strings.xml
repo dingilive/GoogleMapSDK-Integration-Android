@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GoogleMapSDK-Integration-Android</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_google_map">GoogleMap</string>
+    <string name="title_activity_dingi_map_reverse">DingiMapReverse</string>
+    <string name="title_activity_google_map_land_mark">Map</string>
+    <string name="title_activity_google_map_auto_complete_search">Map</string>
+    <string name="title_activity_google_map_navigation">Map</string>
+    <string name="region">Area</string>
+    <string name="road">Road/Lane</string>
+    <string name="houseno">House No</string>
+    <string name="search">Search</string>
+    <string name="plot">Plot/house/holding</string>
+    <string name="road_len">Road/lane/village</string>
+    <string name="village">Road/Lane/Village</string>
+    <string name="title_activity_google_map_address_search_viewer">Map</string>
+    <string name="title_activity_google_map_navigation_dw">Map</string>
+    <string name="dingi_api">EjFUMTUMKFcnJ2VzRnL39Cd2ixtHScJ2p0C1vhP2</string>
+</resources>
