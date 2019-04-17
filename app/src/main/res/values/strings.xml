@@ -16,4 +16,11 @@
     <string name="title_activity_google_map_address_search_viewer">Map</string>
     <string name="title_activity_google_map_navigation_dw">Map</string>
     <string name="dingi_api">EjFUMTUMKFcnJ2VzRnL39Cd2ixtHScJ2p0C1vhP2</string>
+
+
+    //Here is your X api key
+
+    <string name="xApiKey">2ad24ZZoOm5GQ2tPtm3y09lDqTDUg8E76IBB8grO</string>
+
+
 </resources>

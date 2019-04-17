@@ -17,6 +17,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.dingisample.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -81,7 +82,7 @@ public class VolleyRequest {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", "2ad24ZZoOm5GQ2tPtm3y09lDqTDUg8E76IBB8grO");
+                headers.put("x-api-key", mContext.getResources().getString(R.string.xApiKey));
 
                 return headers;
             }
@@ -128,8 +129,8 @@ public class VolleyRequest {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", "2ad24ZZoOm5GQ2tPtm3y09lDqTDUg8E76IBB8grO");
-
+                headers.put("x-api-key", mContext.getResources().getString(R.string.xApiKey));
+                
                 return headers;
             }
 
