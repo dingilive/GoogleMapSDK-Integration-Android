@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GoogleMapSDK-Integration-Android</string>
+    <string name="app_name">GoogleMapSDKIntegration</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_google_map">GoogleMap</string>
     <string name="title_activity_dingi_map_reverse">DingiMapReverse</string>
