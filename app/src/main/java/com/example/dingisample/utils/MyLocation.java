@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import static android.content.Context.LOCATION_SERVICE;
 
 public class MyLocation {
-
+    //https://drive.google.com/file/d/1y05I37G4dalM258Yao1xBRI-Towfxmxi/view?usp=sharing
     Locations location;
     private FusedLocationProviderClient mFusedLocationClient;
     private MyLocationListener mlistener;

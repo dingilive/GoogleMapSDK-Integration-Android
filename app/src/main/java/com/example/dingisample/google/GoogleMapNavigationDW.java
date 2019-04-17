@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -246,6 +247,10 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
             @Override
             public void onClick(View v) {
 
+
+                ((CardView) findViewById(R.id.walkselected)).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
+                ((CardView) findViewById(R.id.driveselected)).setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
                 if (slon < 1) {
 
                     Toast.makeText(GoogleMapNavigationDW.this, "Select your location !", Toast.LENGTH_SHORT).show();
@@ -309,6 +314,10 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
     }
 
     private void getDriving() {
+
+        ((CardView) findViewById(R.id.walkselected)).setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        ((CardView) findViewById(R.id.driveselected)).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
+
         VolleyRequest vr = new VolleyRequest(GoogleMapNavigationDW.this);
 
         String q = slon + "a" + slat + "b" + dlon + "a" + dlat;

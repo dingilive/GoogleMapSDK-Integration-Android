@@ -40,6 +40,8 @@
                 android:tint="#25C27A" />
 
             <AutoCompleteTextView
+                android:fontFamily="@font/poppins"
+                android:textSize="13dp"
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

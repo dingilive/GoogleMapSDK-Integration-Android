@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -243,6 +244,10 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
             public void onClick(View v) {
                 VolleyRequest vr = new VolleyRequest(DingiMapNavigationDW.this);
 
+
+                ((CardView) findViewById(R.id.walkselected)).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
+                ((CardView) findViewById(R.id.driveselected)).setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                Log.e("asd", "walk");
                 String q = slon + "a" + slat + "b" + dlon + "a" + dlat;
                 vr.VolleyGet(Api.navWalkingResult + "?steps=false&criteria=both&coordinates=" + q + "&language=en");
                 vr.setListener(new VolleyRequest.MyServerListener() {
@@ -318,6 +323,11 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
 
     private void getDriving() {
         VolleyRequest vr = new VolleyRequest(DingiMapNavigationDW.this);
+
+
+        ((CardView) findViewById(R.id.walkselected)).setCardBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        ((CardView) findViewById(R.id.driveselected)).setCardBackgroundColor(getResources().getColor(R.color.colorAccent));
+
 
         String q = slon + "a" + slat + "b" + dlon + "a" + dlat;
         vr.VolleyGet(Api.navDrivingResult + "?steps=false&criteria=both&coordinates=" + q + "&language=en");
