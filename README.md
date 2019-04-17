@@ -1,10 +1,10 @@
 ###Google Map and Dingi Map Integration Sample
 
- - Reverse Geocoding.
- - Reverse Landmark.
- - Autocomplete Search.
- - Address Search.
- - Navigation Driving / Walking.
+ - Reverse Geocoding.__
+ - Reverse Landmark.__
+ - Autocomplete Search.__
+ - Address Search.__
+ - Navigation Driving / Walking.__
 
 
 #### Step 1:
@@ -21,10 +21,11 @@ Import the project in android studio.
   
 #### Step 3:
 
- Go to 
+ Go to srs > debug > values > google_maps_api.xml 
  
  Add your google map api key in the field PUT_YOUR_GOOGLE_MAP_API_KEY .
-
-
+ 
+ 
+ 
 For more details about the api please visit http://www.dingi.tech/docs/api/index.html
 
