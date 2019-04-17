@@ -26,6 +26,10 @@ Import the project in android studio.
  Add your google map api key in the field PUT_YOUR_GOOGLE_MAP_API_KEY .
  
  
+ #### Step 4:
+ 
+  Build the project and run . 
+ 
  
 For more details about the api please visit http://www.dingi.tech/docs/api/index.html
 
