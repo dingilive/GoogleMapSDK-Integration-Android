@@ -81,7 +81,7 @@ public class VolleyRequest {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", "ru7KPUg2Wj17lRGdT1mTn9fCbYYSI2Ojaop8iwB5");
+                headers.put("x-api-key", "2ad24ZZoOm5GQ2tPtm3y09lDqTDUg8E76IBB8grO");
 
                 return headers;
             }
@@ -128,7 +128,7 @@ public class VolleyRequest {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
-                headers.put("x-api-key", "ru7KPUg2Wj17lRGdT1mTn9fCbYYSI2Ojaop8iwB5");
+                headers.put("x-api-key", "2ad24ZZoOm5GQ2tPtm3y09lDqTDUg8E76IBB8grO");
 
                 return headers;
             }

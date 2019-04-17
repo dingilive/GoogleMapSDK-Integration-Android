@@ -161,10 +161,7 @@ public class GoogleMapAutoCompleteSearch extends FragmentActivity implements OnM
                         nameList.add(obj.getString("name"));
 
                     }
-                    if (!isSelected) {
 
-                        edSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(GoogleMapAutoCompleteSearch.this, android.R.layout.simple_list_item_1, nameList);
                     edSearch.setAdapter(adapter);
@@ -176,6 +173,13 @@ public class GoogleMapAutoCompleteSearch extends FragmentActivity implements OnM
                             drawMarker(id);
                         }
                     });
+
+                    if (!isSelected) {
+
+                        edSearch.showDropDown();
+                    }
+
+
                 } catch (
                         Exception w) {
 

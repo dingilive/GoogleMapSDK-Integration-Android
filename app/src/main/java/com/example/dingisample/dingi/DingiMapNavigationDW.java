@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dingi.dingisdk.Dingi;
+import com.dingi.dingisdk.annotations.IconFactory;
 import com.dingi.dingisdk.annotations.Marker;
 import com.dingi.dingisdk.annotations.MarkerOptions;
 import com.dingi.dingisdk.annotations.PolylineOptions;
@@ -194,10 +195,7 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                         drsnameList.add(obj.getString("name"));
 
                     }
-                    if (!isdrsSelected) {
 
-                        eddrsSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(DingiMapNavigationDW.this, android.R.layout.simple_list_item_1, drsnameList);
                     eddrsSearch.setAdapter(adapter);
@@ -209,6 +207,11 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                             drawMarkerD(id);
                         }
                     });
+
+                    if (!isdrsSelected) {
+
+                        eddrsSearch.showDropDown();
+                    }
                 } catch (
                         Exception w) {
 
@@ -245,7 +248,8 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                 vr.setListener(new VolleyRequest.MyServerListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        mMap.clear();
+                        drawAllMarkers();
                         try {
                             JSONArray result = response.getJSONArray("routes");
                             for (int i = 0; i < result.length(); i++) {
@@ -320,7 +324,8 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
         vr.setListener(new VolleyRequest.MyServerListener() {
             @Override
             public void onResponse(JSONObject response) {
-
+                mMap.clear();
+                drawAllMarkers();
                 try {
                     JSONArray result = response.getJSONArray("routes");
                     for (int i = 0; i < result.length(); i++) {
@@ -332,7 +337,7 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                             points.add(new LatLng(pointList.get(ss).latitude(), pointList.get(ss).longitude()));
                         }
 
-                        if (i == 0) {
+                        if (i == result.length() - 1) {
                             mMap.addPolyline(new PolylineOptions()
                                     .addAll(points)
                                     .color(Color.parseColor("#008577"))
@@ -425,10 +430,7 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                         SrsnameList.add(obj.getString("name"));
 
                     }
-                    if (!isSrsSelected) {
 
-                        edSrsSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(DingiMapNavigationDW.this, android.R.layout.simple_list_item_1, SrsnameList);
                     edSrsSearch.setAdapter(adapter);
@@ -440,10 +442,17 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                             drawMarker(id);
                         }
                     });
+
+                    if (!isSrsSelected) {
+
+                        edSrsSearch.showDropDown();
+                    }
                 } catch (
                         Exception w) {
 
                 }
+
+
             }
 
             @Override
@@ -494,7 +503,21 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 18));
                         hideKeyboard(DingiMapNavigationDW.this);
 
-                        getDriving();
+                        MyLocation myLocation = new MyLocation(DingiMapNavigationDW.this);
+                        myLocation.setListener(new MyLocation.MyLocationListener() {
+                            @Override
+                            public void onLocationFound(Location location) {
+                                slat = location.getLatitude();
+                                slon = location.getLongitude();
+                                Log.e("Asd", slat + "");
+                                getDriving();
+                            }
+
+                            @Override
+                            public void onFailed() {
+
+                            }
+                        });
                     }
                 }
             }
@@ -535,6 +558,20 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
         });
     }
 
+    private void drawAllMarkers() {
+
+
+        IconFactory iconFactory = IconFactory.getInstance(DingiMapNavigationDW.this);
+        com.dingi.dingisdk.annotations.Icon start = iconFactory.fromResource(R.drawable.ic_task_map);
+
+        IconFactory iconFactoryS = IconFactory.getInstance(DingiMapNavigationDW.this);
+        com.dingi.dingisdk.annotations.Icon end = iconFactory.fromResource(R.drawable.ic_task_start);
+
+
+        mMap.addMarker(new MarkerOptions().position(new LatLng(slat, slon)).title("").setIcon(start));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(dlat, dlon)).title("").setIcon(end));
+
+    }
     private void manageCamera() {
         try {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();

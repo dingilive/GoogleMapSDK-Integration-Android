@@ -30,6 +30,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -167,10 +168,7 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
                         drsnameList.add(obj.getString("name"));
 
                     }
-                    if (!isdrsSelected) {
 
-                        eddrsSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(GoogleMapNavigationDW.this, android.R.layout.simple_list_item_1, drsnameList);
                     eddrsSearch.setAdapter(adapter);
@@ -183,6 +181,11 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
 
                         }
                     });
+
+                    if (!isdrsSelected) {
+
+                        eddrsSearch.showDropDown();
+                    }
                 } catch (
                         Exception w) {
 
@@ -273,12 +276,12 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
                                         map.addPolyline(new PolylineOptions()
                                                 .addAll(points)
                                                 .color(Color.parseColor("#008577"))
-                                                .width(6));
+                                                .width(10));
                                     } else {
                                         map.addPolyline(new PolylineOptions()
                                                 .addAll(points)
                                                 .color(Color.parseColor("#D81B60"))
-                                                .width(6));
+                                                .width(10));
                                     }
                                     manageCamera();
                                 }
@@ -326,16 +329,16 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
                             points.add(new LatLng(pointList.get(ss).latitude(), pointList.get(ss).longitude()));
                         }
 
-                        if (i == 0) {
+                        if (i == result.length() - 1) {
                             map.addPolyline(new PolylineOptions()
                                     .addAll(points)
                                     .color(Color.parseColor("#008577"))
-                                    .width(6));
+                                    .width(10));
                         } else {
                             map.addPolyline(new PolylineOptions()
                                     .addAll(points)
                                     .color(Color.parseColor("#9E9E9E"))
-                                    .width(6));
+                                    .width(10));
                         }
                     }
                     manageCamera();
@@ -377,10 +380,7 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
                         SrsnameList.add(obj.getString("name"));
 
                     }
-                    if (!isSrsSelected) {
 
-                        edSrsSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(GoogleMapNavigationDW.this, android.R.layout.simple_list_item_1, SrsnameList);
                     edSrsSearch.setAdapter(adapter);
@@ -392,6 +392,10 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
                             drawMarker(id);
                         }
                     });
+                    if (!isSrsSelected) {
+
+                        edSrsSearch.showDropDown();
+                    }
                 } catch (
                         Exception w) {
 
@@ -433,8 +437,9 @@ public class GoogleMapNavigationDW extends FragmentActivity implements OnMapRead
     }
 
     private void drawAllMarkers() {
-        map.addMarker(new MarkerOptions().position(new LatLng(slat, slon)).title(""));
-        map.addMarker(new MarkerOptions().position(new LatLng(dlat, dlon)).title(""));
+
+        map.addMarker(new MarkerOptions().position(new LatLng(slat, slon)).title("").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+        map.addMarker(new MarkerOptions().position(new LatLng(dlat, dlon)).title("").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
 
     }

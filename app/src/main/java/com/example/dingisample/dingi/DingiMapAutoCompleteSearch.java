@@ -145,10 +145,7 @@ public class DingiMapAutoCompleteSearch extends FragmentActivity implements OnMa
                         nameList.add(obj.getString("name"));
 
                     }
-                    if (!isSelected) {
 
-                        edSearch.showDropDown();
-                    }
                     ArrayAdapter<String> adapter =
                             new ArrayAdapter<String>(DingiMapAutoCompleteSearch.this, android.R.layout.simple_list_item_1, nameList);
                     edSearch.setAdapter(adapter);
@@ -160,6 +157,13 @@ public class DingiMapAutoCompleteSearch extends FragmentActivity implements OnMa
                             drawMarker(id);
                         }
                     });
+
+                    if (!isSelected) {
+
+                        edSearch.showDropDown();
+                    }
+
+
                 } catch (
                         Exception w) {
 
