@@ -50,9 +50,6 @@
                 android:value="com.example.dingisample.MainActivity" />
         </activity>
         <activity
-            android:name=".GoogleMapNavigation"
-            android:label="@string/title_activity_google_map_navigation" />
-        <activity
             android:name=".google.GoogleMapAutoCompleteSearch"
             android:label="@string/title_activity_google_map_auto_complete_search">
             <meta-data
