@@ -1,10 +1,10 @@
-###Google Map and Dingi Map Integration Sample
+####Google Map and Dingi Map Integration Sample
 
- - Reverse Geocoding.__
- - Reverse Landmark.__
- - Autocomplete Search.__
- - Address Search.__
- - Navigation Driving / Walking.__
+ - Reverse Geocoding._
+ - Reverse Landmark._
+ - Autocomplete Search._
+ - Address Search._
+ - Navigation Driving / Walking._
 
 
 #### Step 1:
