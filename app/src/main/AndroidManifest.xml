@@ -92,6 +92,7 @@
         <activity android:name=".dingi.DingiMapAddressSearchViewer" />
         <activity android:name=".dingi.DingiMapAutoCompleteSearch" />
         <activity android:name=".dingi.DingiMapNavigationDW" />
+        <activity android:name=".google.GoogleMapReverseGeoAll" />
     </application>
 
 </manifest>

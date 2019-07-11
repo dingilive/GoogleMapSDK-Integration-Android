@@ -2,9 +2,9 @@ package com.example.dingisample.dingi;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -140,7 +140,7 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
             public void onResponse(JSONObject response) {
 
                 try {
-                    ((EditText) findViewById(R.id.address)).setText(response.getString("addr_en"));
+                    ((EditText) findViewById(R.id.address)).setText(response.getJSONObject("result").getString("address"));
 
                 } catch (Exception e) {
 

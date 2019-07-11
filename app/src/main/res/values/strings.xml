@@ -15,7 +15,7 @@
     <string name="village">Road/Lane/Village</string>
     <string name="title_activity_google_map_address_search_viewer">Map</string>
     <string name="title_activity_google_map_navigation_dw">Map</string>
-    <string name="dingi_api">EjFUMTUMKFcnJ2VzRnL39Cd2ixtHScJ2p0C1vhP2</string>
+    <string name="dingi_api">YOUR DINGI API KEY</string>
 
 
     //Here is your X api key

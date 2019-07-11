@@ -2,11 +2,13 @@ package com.example.dingisample.google;
 
 import android.location.Location;
 import android.os.Bundle;
-import androidx.fragment.app.FragmentActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
+
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.dingisample.R;
 import com.example.dingisample.utils.Api;
@@ -21,17 +23,17 @@ import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONObject;
 
-public class GoogleMapReverseGeo extends FragmentActivity implements OnMapReadyCallback {
+public class GoogleMapReverseGeoAll extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google_map_reversegeo);
+        setContentView(R.layout.activity_google_map_reversegeo_all);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-        toolbar.setTitle("Google Map Reverse Geocoding");
+        toolbar.setTitle("Google Map & Api Reverse Geocoding");
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +60,7 @@ public class GoogleMapReverseGeo extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        MyLocation myLocation = new MyLocation(GoogleMapReverseGeo.this);
+        MyLocation myLocation = new MyLocation(GoogleMapReverseGeoAll.this);
         myLocation.setListener(new MyLocation.MyLocationListener() {
             @Override
             public void onLocationFound(Location location) {
@@ -86,23 +88,23 @@ public class GoogleMapReverseGeo extends FragmentActivity implements OnMapReadyC
     }
 
     private void callAPI(LatLng latLng) {
-        VolleyRequest volleyRequest = new VolleyRequest(GoogleMapReverseGeo.this);
-        volleyRequest.VolleyGet(Api.reverseGeo + "demo?lat=" + latLng.latitude + "&lng=" + latLng.longitude + "&address_level=UPTO_THANA");
+        VolleyRequest volleyRequest = new VolleyRequest(GoogleMapReverseGeoAll.this);
+        volleyRequest.VolleyGet("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latLng.latitude+","+latLng.longitude+"&key=AIzaSyDWe0-jb9UbNNz8SwXfnsBWUt5d3dwH5MI");
         volleyRequest.setListener(new VolleyRequest.MyServerListener() {
             @Override
             public void onResponse(JSONObject response) {
 
                 try {
-                    ((EditText) findViewById(R.id.address)).setText(response.getString("addr_en"));
+                    ((EditText) findViewById(R.id.address)).setText(response.getJSONArray("results").getJSONObject(0).getString("formatted_address"));
 
                 } catch (Exception e) {
-
+                    Log.e("Asd",e.toString());
                 }
             }
 
             @Override
             public void onError(String error) {
-                Toast.makeText(GoogleMapReverseGeo.this, error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(GoogleMapReverseGeoAll.this, error, Toast.LENGTH_SHORT).show();
             }
 
             @Override
