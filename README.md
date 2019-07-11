@@ -30,6 +30,6 @@ Import the project in android studio.
  
   Build the project and run . 
  
- 
+Follow this link for more : https://medium.com/@tasfiqul.ghani/how-to-use-dingi-api-with-google-map-bc933e2f6aa4 
 For more details about the api please visit http://www.dingi.tech/docs/api/index.html
 
