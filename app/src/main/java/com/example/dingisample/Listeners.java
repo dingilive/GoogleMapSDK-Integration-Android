@@ -1,13 +1,14 @@
-package com.example.dingisample.dingi;
+package com.example.dingisample;
 
 import android.location.Location;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
 
 import com.dingi.dingisdk.Dingi;
 import com.dingi.dingisdk.camera.CameraUpdate;
@@ -15,16 +16,16 @@ import com.dingi.dingisdk.camera.CameraUpdateFactory;
 import com.dingi.dingisdk.constants.Style;
 import com.dingi.dingisdk.geometry.LatLng;
 import com.dingi.dingisdk.maps.DingiMap;
+import com.dingi.dingisdk.maps.MapFragment;
 import com.dingi.dingisdk.maps.MapView;
 import com.dingi.dingisdk.maps.OnMapReadyCallback;
-import com.example.dingisample.R;
 import com.example.dingisample.utils.Api;
 import com.example.dingisample.utils.MyLocation;
 import com.example.dingisample.utils.VolleyRequest;
 
 import org.json.JSONObject;
 
-public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallback {
+public class Listeners extends FragmentActivity implements DingiMap.OnFlingListener,DingiMap.OnMapLongClickListener, DingiMap.OnMapClickListener,DingiMap.OnCompassAnimationListener,DingiMap.OnCameraMoveCanceledListener ,OnMapReadyCallback, MapFragment.OnMapViewReadyCallback {
 
     private static final String TAG = "BasicMapActivity";
     private MapView mMap;
@@ -48,7 +49,6 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
         });
         mMap = findViewById(R.id.dingi_map);
         mMap.onCreate(savedInstanceState);
-        mMap.getMapAsync(this);
     }
 
 
@@ -56,7 +56,7 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(@NonNull DingiMap dingiMap) {
         dingiMap.setStyleUrl(Style.DINGI_ENGLISH);
         map = dingiMap;
-        MyLocation myLocation = new MyLocation(DingiReverseGeo.this);
+        MyLocation myLocation = new MyLocation(Listeners.this);
         myLocation.setListener(new MyLocation.MyLocationListener() {
             @Override
             public void onLocationFound(Location location) {
@@ -138,7 +138,7 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
     }
 
     private void callAPI(LatLng latLng) {
-        VolleyRequest volleyRequest = new VolleyRequest(DingiReverseGeo.this);
+        VolleyRequest volleyRequest = new VolleyRequest(Listeners.this);
         volleyRequest.VolleyGet(Api.reverseGeo + "demo?lat=" + latLng.getLatitude() + "&lng=" + latLng.getLongitude() + "&address_level=UPTO_THANA");
         volleyRequest.setListener(new VolleyRequest.MyServerListener() {
             @Override
@@ -154,7 +154,7 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
 
             @Override
             public void onError(String error) {
-                Toast.makeText(DingiReverseGeo.this, error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Listeners.this, error, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -165,4 +165,38 @@ public class DingiReverseGeo extends FragmentActivity implements OnMapReadyCallb
     }
 
 
+    @Override
+    public void onCameraMoveCanceled() {
+
+    }
+
+    @Override
+    public void onCompassAnimation() {
+
+    }
+
+    @Override
+    public void onCompassAnimationFinished() {
+
+    }
+
+    @Override
+    public boolean onMapClick(@NonNull LatLng latLng) {
+        return false;
+    }
+
+    @Override
+    public void onFling() {
+
+    }
+
+    @Override
+    public boolean onMapLongClick(@NonNull LatLng latLng) {
+        return false;
+    }
+
+    @Override
+    public void onMapViewReady(MapView mapView) {
+
+    }
 }

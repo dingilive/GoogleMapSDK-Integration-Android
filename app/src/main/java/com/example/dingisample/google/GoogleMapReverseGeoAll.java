@@ -11,7 +11,6 @@ import android.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.dingisample.R;
-import com.example.dingisample.utils.Api;
 import com.example.dingisample.utils.MyLocation;
 import com.example.dingisample.utils.VolleyRequest;
 import com.google.android.gms.maps.CameraUpdate;
@@ -26,6 +25,8 @@ import org.json.JSONObject;
 public class GoogleMapReverseGeoAll extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private LatLng latr;
+    private com.dingi.dingisdk.geometry.LatLng latLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +90,10 @@ public class GoogleMapReverseGeoAll extends FragmentActivity implements OnMapRea
 
     private void callAPI(LatLng latLng) {
         VolleyRequest volleyRequest = new VolleyRequest(GoogleMapReverseGeoAll.this);
-        volleyRequest.VolleyGet("https://maps.googleapis.com/maps/api/geocode/json?latlng="+latLng.latitude+","+latLng.longitude+"&key=YOUR API KEY");
+        volleyRequest.VolleyGet("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latLng.latitude + "," + latLng.longitude + "&key=YOUR API KEY");
         volleyRequest.setListener(new VolleyRequest.MyServerListener() {
 
-            
+
             @Override
             public void onResponse(JSONObject response) {
 
@@ -100,7 +101,7 @@ public class GoogleMapReverseGeoAll extends FragmentActivity implements OnMapRea
                     ((EditText) findViewById(R.id.address)).setText(response.getJSONArray("results").getJSONObject(0).getString("formatted_address"));
 
                 } catch (Exception e) {
-                    Log.e("Asd",e.toString());
+                    Log.e("Asd", e.toString());
                 }
             }
 
