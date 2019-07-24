@@ -25,7 +25,7 @@ import com.example.dingisample.utils.VolleyRequest;
 
 import org.json.JSONObject;
 
-public class Listeners extends FragmentActivity implements DingiMap.OnFlingListener,DingiMap.OnMapLongClickListener, DingiMap.OnMapClickListener,DingiMap.OnCompassAnimationListener,DingiMap.OnCameraMoveCanceledListener ,OnMapReadyCallback, MapFragment.OnMapViewReadyCallback {
+public class Listeners extends FragmentActivity implements DingiMap.OnFlingListener,DingiMap.OnMapLongClickListener, DingiMap.OnMapClickListener,DingiMap.OnCompassAnimationListener,DingiMap.OnCameraMoveCanceledListener ,OnMapReadyCallback, MapFragment.OnMapViewReadyCallback, DingiMap.OnCameraMoveListener {
 
     private static final String TAG = "BasicMapActivity";
     private MapView mMap;
@@ -172,31 +172,38 @@ public class Listeners extends FragmentActivity implements DingiMap.OnFlingListe
 
     @Override
     public void onCompassAnimation() {
-
+//https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/DingiMap.OnCompassAnimationListener.html
     }
 
     @Override
     public void onCompassAnimationFinished() {
-
+//
     }
 
     @Override
     public boolean onMapClick(@NonNull LatLng latLng) {
+        //https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/DingiMap.OnMapClickListener.html
         return false;
     }
 
     @Override
     public void onFling() {
-
+       // https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/DingiMap.OnFlingListener.html
     }
 
     @Override
     public boolean onMapLongClick(@NonNull LatLng latLng) {
+        //https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/DingiMap.OnMapLongClickListener.html
         return false;
     }
 
     @Override
     public void onMapViewReady(MapView mapView) {
+//https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/OnMapReadyCallback.html
+    }
 
+    @Override
+    public void onCameraMove() {
+  //https://www.dingi.tech/docs/android-sdk/com/dingi/dingisdk/maps/DingiMap.OnCameraMoveListener.html
     }
 }
