@@ -90,7 +90,7 @@ public class GoogleMapReverseGeoAll extends FragmentActivity implements OnMapRea
 
     private void callAPI(LatLng latLng) {
         VolleyRequest volleyRequest = new VolleyRequest(GoogleMapReverseGeoAll.this);
-        volleyRequest.VolleyGet("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latLng.latitude + "," + latLng.longitude + "&key=YOUR API KEY");
+        volleyRequest.VolleyGet("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latLng.latitude + "," + latLng.longitude + "&key=AIzaSyDWe0-jb9UbNNz8SwXfnsBWUt5d3dwH5MI");
         volleyRequest.setListener(new VolleyRequest.MyServerListener() {
 
 

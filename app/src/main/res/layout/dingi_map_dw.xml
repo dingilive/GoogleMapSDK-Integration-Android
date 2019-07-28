@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DingiMapReverse">
+    tools:context=".dingi.DingiMapNavigationDW">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/map_direction_toolbar"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="56dp"
             android:background="@color/colorPrimary"
             android:clipChildren="false"
             android:clipToPadding="false"
@@ -235,5 +235,22 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/start"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+        <TextView
+            android:textSize="25dp"
+            android:textColor="#FFF"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:text="Start Navigation"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

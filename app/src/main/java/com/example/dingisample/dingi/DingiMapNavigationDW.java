@@ -4,11 +4,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentActivity;
-import androidx.cardview.widget.CardView;
-import androidx.appcompat.widget.Toolbar;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,6 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 
 import com.dingi.dingisdk.Dingi;
 import com.dingi.dingisdk.annotations.IconFactory;
@@ -124,6 +126,23 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
                     isSrsSelected = false;
                 }
 
+            }
+        });
+
+
+        findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Handler handler = new Handler();
+                int delay = 1000; //milliseconds
+
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        //do something
+                        getDriving();
+                        handler.postDelayed(this, delay);
+                    }
+                }, delay);
             }
         });
 
@@ -582,6 +601,7 @@ public class DingiMapNavigationDW extends FragmentActivity implements OnMapReady
         mMap.addMarker(new MarkerOptions().position(new LatLng(dlat, dlon)).title("").setIcon(end));
 
     }
+
     private void manageCamera() {
         try {
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
